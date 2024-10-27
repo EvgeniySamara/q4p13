@@ -67,26 +67,26 @@ class MagicFileProcessor:
             print(ex)
             print('Данный файл не может быть удален')
 
-def process_input(self):
-    """Обрабатывает ввод пользователя и записывает его в файл."""
-    try:
-        input_number = int(input('Введите число: '))
-        self.magic_sum += input_number
-        if self.is_exception_raise():
-            raise Exception('Вас постигла неудача!')
-        with open(self.file_path, 'a') as out_fd:
-            out_fd.write(str(input_number) + '\n')
-    except (ValueError, KeyboardInterrupt) as ex:
-        print(ex)
-        print('Возникли проблемы при вводе.')
-        print('Попробуйте еще раз')
+    def process_input(self):
+        """Обрабатывает ввод пользователя и записывает его в файл."""
+        try:
+            input_number = int(input('Введите число: '))
+            self.magic_sum += input_number
+            if self.is_exception_raise():
+                raise Exception('Вас постигла неудача!')
+            with open(self.file_path, 'a') as out_fd:
+                out_fd.write(str(input_number) + '\n')
+        except (ValueError, KeyboardInterrupt) as ex:
+            print(ex)
+            print('Возникли проблемы при вводе.')
+            print('Попробуйте еще раз')
 
-def run(self):
-    """Основной метод для запуска процесса обработки ввода."""
-    self.pre_init() # Удаляет старый файл, если он существует
-    while self.magic_sum < MAGIC_NUMBER:
-        self.process_input()
-    print('Вы успешно выполнили условие для выхода из порочного цикла!')
+    def run(self):
+        """Основной метод для запуска процесса обработки ввода."""
+        self.pre_init() # Удаляет старый файл, если он существует
+        while self.magic_sum < MAGIC_NUMBER:
+            self.process_input()
+        print('Вы успешно выполнили условие для выхода из порочного цикла!')
 
 # Запуск программы
 if __name__ == "__main__":
